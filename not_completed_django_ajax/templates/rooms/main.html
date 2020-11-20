@@ -1,0 +1,33 @@
+{% extends 'rooms/base.html' %}
+{% block main %}
+<table  class="table table-bordered"  id="myTable">
+<thead>
+<th>
+Room Number
+</th>
+<th>
+Name
+</th>
+<th>
+Number of Beds
+</th>
+<th>
+Type
+</th>
+<th>
+Actions
+</th>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<div  id="roomform">
+    <button  id="createRoom"  class="btn"> Create Room </button>
+</div>
+
+{% endblock %}
+{% load static %}
+{% block extrajs %}
+<script  src="{% static 'js/app.js' %}"></script>
+{% endblock %}

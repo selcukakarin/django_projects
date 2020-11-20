@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Makale Oluştur</h3>
+        <hr>
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{ form.media }}  <!-- ckeditör için gerekli --->
+            {{form|crispy}}
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            {{ form.date }}
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-danger">Kaydet</button>
+
+        </form>
+    </div>
+</div>
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+</script>
+{% endblock body %}

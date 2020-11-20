@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django + Chart.js</title>
+    {% include 'base/css.html' %}
+    {% icnlude 'base/bootstrap_defaults.html' %}
+</head>
+<body>
+<div class="container">
+{% block content %}
+{% endblock content %}
+</div>
+{% include 'base/js.html' %}
+<script>
+$(document).ready(function(){
+    {% block jquery }
+})
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <h3>Selçuk Akarının bloğuna hoşgeldin</h3>
+        <p>Bu blog django içindir</p>
+    </div>
+    <p>
+        {% if request.user.is_authenticated %}      <!-- request.user sisteme giriş yapmış user'a erişir -->
+            giriş yapılmış, {{request.user.username}}
+        {% else %}
+            giriş yapılmamış
+        {% endif %}
+    </p>
+
+{% endblock body %}

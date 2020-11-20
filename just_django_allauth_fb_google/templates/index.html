@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+{% load i18n %}
+{% load static %}
+<body>
+{% if request.user.is_authenticated %}
+        Hello, {{ request.user.username }}
+        <a href="/accounts/logout/">Logout</a>
+    {% else %}
+        Hello, unknown
+        <a href="/accounts/login/">Login</a>
+    {% endif %}
+    
+
+
+{% load socialaccount %}
+
+{% get_providers as socialaccount_providers %}
+
+{% for provider in socialaccount_providers %}
+{% if provider.id == "openid" %}
+
+{% for brand in provider.get_brands %}
+<li>
+  <a title="{{brand.name}}" 
+     class="socialaccount_provider {{provider.id}} {{brand.id}}" 
+     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
+     >{{brand.name}} </a>
+     
+</li>
+{% endfor %}
+{% endif %}
+<li style="list-style-type:none;">
+  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><img style="width:100px;" src="{% static '' %}{{provider.name}}.png" alt=""></a>
+</li>
+{% endfor %}
+
+
+
+</body>
+</html>
