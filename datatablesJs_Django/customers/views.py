@@ -100,42 +100,7 @@ def create_object(request):
         ad = request.POST.get('ad')
         soyad = request.POST.get('soyad')
         aktifPasif = request.POST.get('aktifPasif')
-        field1 = request.POST.get('field1')
-        field2 = request.POST.get('field2')
-        field3 = request.POST.get('field3')
-        field4 = request.POST.get('field4')
-        field5 = request.POST.get('field5')
-        field6 = request.POST.get('field6')
-        field7 = request.POST.get('field7')
-        field8 = request.POST.get('field8')
-        resim = request.POST.get('resim')
-        field10 = request.POST.get('field10')
-        field11 = request.POST.get('field11')
-        field12 = request.POST.get('field12')
-        field13 = request.POST.get('field13')
-        field14 = request.POST.get('field14')
-        field15 = request.POST.get('field15')
-        field16 = request.POST.get('field16')
-        if field16 == 'true':
-            field16 = True
-        else:
-            field16 = False
-        field17 = request.POST.get('field17')
-        if field17 == 'true':
-            field17 = True
-        else:
-            field17 = False
-        field18 = request.POST.get('field18')
-        field19 = request.POST.get('field19')
-        if field19 == 'true':
-            field19 = True
-        else:
-            field19 = False
-        field20 = request.POST.get('field20')
-        field21 = request.POST.get('field21')
-        field22 = request.POST.get('field22')
-        field23 = request.POST.get('field23')
-        field24 = request.POST.get('field24')
+        
         response_data = {}
 
         created_object = Customer(
@@ -144,30 +109,7 @@ def create_object(request):
             ad = ad,
             soyad = soyad,
             aktifPasif = aktifPasif,
-            field1 = field1,
-            field2 = field2, 
-            field3 = field3, 
-            field4 = field4,
-            field5 = field5, 
-            field6 = field6 ,
-            field7 = field7,
-            field8 = field8,
-            resim = resim,
-            field10 = field10,
-            field11 = field11,
-            field12 = field12,
-            field13 = field13,
-            field14 = field14,
-            field15 = field15,
-            field16 = field16,
-            field17 = field17,
-            field18 = field18,
-            field19 = field19,
-            field20 = field20,
-            field21 = field21,
-            field22 = field22,
-            field23 = field23,
-            field24 = field24,
+            
         )
         created_object.save()
 
@@ -178,30 +120,7 @@ def create_object(request):
         response_data['ad'] = created_object.ad
         response_data['soyad'] = created_object.soyad
         response_data['aktifPasif'] = created_object.aktifPasif
-        response_data['field1'] = created_object.field1
-        response_data['field2'] = created_object.field2
-        response_data['field3'] = created_object.field3
-        response_data['field4'] = created_object.field4
-        response_data['field5'] = created_object.field5
-        response_data['field6'] = created_object.field6
-        response_data['field7'] = created_object.field7
-        response_data['field8'] = created_object.field8
-        response_data['resim'] = str(created_object.resim)
-        response_data['field10'] = created_object.field10
-        response_data['field11'] = created_object.field11
-        response_data['field12'] = created_object.field12
-        response_data['field13'] = created_object.field13
-        response_data['field14'] = created_object.field14
-        response_data['field15'] = created_object.field15
-        response_data['field16'] = created_object.field16
-        response_data['field17'] = created_object.field17
-        response_data['field18'] = created_object.field18
-        response_data['field19'] = created_object.field19
-        response_data['field20'] = created_object.field20
-        response_data['field21'] = created_object.field21
-        response_data['field22'] = created_object.field22
-        response_data['field23'] = created_object.field23
-        response_data['field24'] = created_object.field24
+    
 
         return HttpResponse(
             json.dumps(response_data),

@@ -17,6 +17,7 @@
 
 <body>
     <h3>Selam</h3>
+    <button id="addRow">Add new row</button>
     <table id="datatables" class="display" style="width:100%">
         <thead>
             <tr>
@@ -34,30 +35,7 @@
                 <td>{{ q.ad }}</td>
                 <td>{{ q.soyad }}</td>
                 <td>{{ q.aktifPasif }}</td>
-                <td>{{ q.field1 }}</td>
-                <td>{{ q.field2 }}</td>
-                <td>{{ q.field3 }}</td>
-                <td>{{ q.field4 }}</td>
-                <td>{{ q.field5 }}</td>
-                <td>{{ q.field6 }}</td>
-                <td>{{ q.field7 }}</td>
-                <td>{{ q.field8 }}</td>
-                <td>{{ q.resim }}</td>
-                <td>{{ q.field10 }}</td>
-                <td>{{ q.field11 }}</td>
-                <td>{{ q.field12 }}</td>
-                <td>{{ q.field13 }}</td>
-                <td>{{ q.field14 }}</td>
-                <td>{{ q.field15 }}</td>
-                <td>{{ q.field16 }}</td>
-                <td>{{ q.field17 }}</td>
-                <td>{{ q.field18 }}</td>
-                <td>{{ q.field19 }}</td>
-                <td>{{ q.field20 }}</td>
-                <td>{{ q.field21 }}</td>
-                <td>{{ q.field22 }}</td>
-                <td>{{ q.field23 }}</td>
-                <td>{{ q.field24 }}</td>
+                
                 </tr>
             {% endfor %}
         </tbody>
@@ -65,11 +43,8 @@
         </tfoot>
     </table>
     
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script>
@@ -83,12 +58,12 @@ $(document).ready(function () {
     })
     let table = $('#datatables').DataTable({
         colReorder: true,
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": '/customers/drawDt',
-            "type": "GET"
-        },
+        //"processing": true,
+        //"serverSide": true,
+        //"ajax": {
+        //    "url": '/customers/drawDt',
+        //    "type": "GET"
+        //},
         "language": {
             "sDecimal": ",",
             "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
@@ -151,78 +126,6 @@ $(document).ready(function () {
             },
             {
                 "data": "aktifPasif"
-            },
-            {
-                "data": "field1"
-            },
-            {
-                "data": "field2"
-            },
-            {
-                "data": "field3"
-            },
-            {
-                "data": "field4"
-            },
-            {
-                "data": "field5"
-            },
-            {
-                "data": "field6"
-            },
-            {
-                "data": "field7"
-            },
-            {
-                "data": "field8"
-            },
-            {
-                "data": "resim"
-            },
-            {
-                "data": "field10"
-            },
-            {
-                "data": "field11"
-            },
-            {
-                "data": "field12"
-            },
-            {
-                "data": "field13"
-            },
-            {
-                "data": "field14"
-            },
-            {
-                "data": "field15"
-            },
-            {
-                "data": "field16"
-            },
-            {
-                "data": "field17"
-            },
-            {
-                "data": "field18"
-            },
-            {
-                "data": "field19"
-            },
-            {
-                "data": "field20"
-            },
-            {
-                "data": "field21"
-            },
-            {
-                "data": "field22"
-            },
-            {
-                "data": "field23"
-            },
-            {
-                "data": "field24"
             },
             // {
             //     "data": null,
@@ -303,6 +206,20 @@ $(document).ready(function () {
         });
 
     //--->Seçilen satırların silinmesi için listeye ekleme ve çıkarma işlemi
+    var counter = 1;
+    $('#addRow').on( 'click', function () {
+        table.row
+        .add({"id":counter,
+            "hesapKodu":counter,
+            "unvan":counter,
+            "ad":counter,
+            "soyad":counter,
+            "aktifPasif":counter,})
+        .draw();
+        table.draw(false);
+
+        counter++;
+    } );
 
 });
     </script>
