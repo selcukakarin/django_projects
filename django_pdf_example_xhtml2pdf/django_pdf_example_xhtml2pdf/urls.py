@@ -20,5 +20,5 @@ from app1.views import index, GeneratePdf
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('pdf/', GeneratePdf.as_view()),
+    path('pdf/', GeneratePdf.as_view(), name="pdf"),
 ]
