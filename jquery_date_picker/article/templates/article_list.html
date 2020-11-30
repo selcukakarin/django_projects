@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
 </head>
 <body>
     {{title}}
+      <a href="{% url 'article:article_entry' %}">entry</a>
       <table>
           <tr>
              <th>#</th>
