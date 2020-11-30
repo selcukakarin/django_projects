@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <style>
+    .back{
+        background-color: 'red';
+    }
+    </style>
+</head>
+<body>
+    {{customer}}
+    <hr>
+    {{customer.description|linebreaks}}
+    <br>
+    {{customer.logo}}
+    <br>
+    {{customer.logo.url}}
+    <br>
+    {{customer.logo.path}}
+    <br>
+    {% static 'linux.png'%}
+    <br>
+    <img src="{{customer.logo.path}}" height='200px' alt="">
+    <br>
+    <div class="back">
+    <img src="media/{{customer.logo}}" height='200px' alt="">
+    </div>
+</body>
+</html>
