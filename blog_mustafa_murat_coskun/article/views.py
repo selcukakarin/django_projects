@@ -105,3 +105,8 @@ def simple_upload(request):
             'uploaded_file_url': uploaded_file_url
         })
     return render(request, 'simple.html')
+
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'404.html', data)
