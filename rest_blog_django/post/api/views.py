@@ -10,6 +10,7 @@ from rest_framework.generics import (
                                     )
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, DestroyModelMixin
 
+from account.api.throttles import RegisterThrottle
 from post.api.paginations import PostPagination
 from post.api.permissions import IsOwner
 from post.api.serializers import PostSerializer, PostUpdateCreateSerializer
@@ -25,6 +26,8 @@ class PostListAPIView(ListAPIView, CreateModelMixin):
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['title']
     pagination_class = PostPagination
+    # throttle_classes = [RegisterThrottle]
+    throttle_scope = 'selcuk'
 
     def get_queryset(self):
         queryset = Post.objects.filter(draft=False)
@@ -57,12 +60,15 @@ class PostUpdateAPIView(RetrieveUpdateAPIView, DestroyModelMixin):
     lookup_field = 'slug'
     permission_classes = [IsOwner]
 
-    def destroy(self, request, *args, **kwargs):
-        return self.destroy(DestroyModelMixin)
+    # def destroy(self, request, *args, **kwargs):
+    #     return self.destroy(DestroyModelMixin)
 
     def perform_update(self, serializer):
         serializer.save(modified_by=self.request.user)
         # article'a burada en son değiştiren kullanıcı eklenebilir
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
 class PostCreateAPIView(CreateAPIView, ListModelMixin):
