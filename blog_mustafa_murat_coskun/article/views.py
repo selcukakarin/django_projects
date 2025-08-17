@@ -39,6 +39,7 @@ def addArticle(request):
 
     if form.is_valid():
         article=form.save(commit=False)     #############  article'ın author bilgisi olmadan kaydedilmemesi için henüz veritabanına commit etme dedik.
+
         article.author=request.user
         article.save()          #commit=True olur ve vt'ye article kaydedilir.
 

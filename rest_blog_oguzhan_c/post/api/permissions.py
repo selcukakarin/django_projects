@@ -3,6 +3,7 @@ from rest_framework.permissions import BasePermission
 
 class IsOwner(BasePermission):
     def has_permission(self, request, view):
+        # sayfaya ggirince işlem yapamaz
         # her tetiklendiğinde çalışır, önceliklidir.
         # this has priority. this run every trigger.
         print("has_permission calisti")

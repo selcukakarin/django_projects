@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title%} Yazilarim {% endblock%}
+
+{% block content %}
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Güncellenme Tarihi</th>
+        <th scope="col">Aksiyonlar</th>
+      </tr>
+    </thead>
+    <tbody>
+            {% for yazi in yazilar %}
+            <tr>
+                <th scope="row">{{ yazi.id }}</th>
+                <td>{{ yazi.baslik }}</td>
+                <td>{{ yazi.duzenlenme_tarihi }}</td>
+                <td>
+                  <p>
+                    <a class="btn btn-primary" href="{% url 'yazi-guncelle' slug=yazi.slug %}">Düzenle</a>
+                    <a class="btn btn-danger" href="{% url 'yazi-sil' slug=yazi.slug %}">Sil</a>
+                  </p>
+                </td>
+            </tr>
+            {% empty %}
+              <div class="alert alert-warning" role="alert">
+                <p>Hiç yazınız yok.</p>
+              </div>
+            {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if yazilar.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?sayfa={{yazilar.previous_page_number}}" tabindex="-1" aria-disabled="true">Önceki</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Önceki</a>
+      </li>
+    {% endif %}
+   
+    <li class="page-item"><a class="page-link" href="#">{{yazilar.number}}</a></li>
+    
+    {% if yazilar.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?sayfa={{yazilar.next_page_number}}">Sonraki</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?sayfa={{yazilar.paginator.num_pages}}">Son Sayfa</a>
+      </li>
+    {%endif%}
+   
+  </ul>
+</nav>
+
+
+{% endblock %}

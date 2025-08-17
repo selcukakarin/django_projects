@@ -21,8 +21,6 @@ def register(request):
 
         login(request,newUser)
         
-        ## Django uyarı mesajları kullanımı
-        messages.warning(request,"Başarıyla kayıt oldunuz")
 
         return redirect("index")
         

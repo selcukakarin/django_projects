@@ -15,6 +15,7 @@ class Article(models.Model):
     class Meta:
         ordering = ['-created_date']
 
+
 class Comment(models.Model):
     article=models.ForeignKey(Article,on_delete=models.CASCADE,verbose_name="Makale",related_name="comments")
     #yukarıdaki kodda related_name özelliği bizim ileride Article.comments ile bu Article'a bağlı commentlere de ulaşabilmemizi sağlayacaktır.

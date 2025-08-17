@@ -128,3 +128,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+blog_mustafa_murat_coskun/staticfiles/
+blog_baris_aslan/staticfiles/
+staticfiles/
+/venv2/
+venv2/

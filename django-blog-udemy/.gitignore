@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__
+.vscode
+db.sqlite3
+yazi_resimleri
+media
+.env
+prod.sqlite3
+logs
+/venv/
